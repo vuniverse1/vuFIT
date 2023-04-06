@@ -1,0 +1,61 @@
+body {
+    background-color: rgb(185, 185, 185);
+  }
+  
+  .logo {
+    width: 20em;
+    height: 80px;
+  }
+  
+  h1 {
+    font-weight: 300;
+  }
+  
+  h1 strong {
+    font-weight: 600;
+    color: red;
+  }
+  
+  .inputstyle {
+    padding: 20px !important;
+  }
+  
+  .whoop {
+    background-color: rgb(0, 208, 255);
+    width: 8em;
+    font-size: 30px !important;
+    color: #ffffff;
+  }
+  
+  .caloriescont {
+    background-color: #ffffff;
+    padding: 30px;
+  }
+  
+  .caloriescont ul {
+    padding: 0px;
+  }
+  
+  .caloriescont ul li {
+    list-style: none;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #efefef;
+    width: 80%;
+  }
+  
+  .caloriescont h3 {
+    color: red;
+    font-size: 2em;
+    text-transform: capitalize;
+    font-weight: 700;
+  }
+  
+  .caloriescont h5 {
+    color: red;
+  }
+  
+  .servingsize {
+    background-color: #000000;
+    padding: 10px;
+    color: #ffffff;
+  }
