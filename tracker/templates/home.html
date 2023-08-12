@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 {% load static%} {%load mathfilters%} {%load humanize%}
 <html lang="en">
 
@@ -7,31 +7,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" 
-        crossorigin="anonymous" />
-    <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css" />
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+        <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css" />
     <title>Calorie Finder</title>
 </head>
 
 <body>
-    
     <div class="container">
+       
+
         <div class="row justify-content-center">
             <div class="col-md-8 text-center">
                 <img src="{% static 'images/imageedit_2_9299689588.png'%}" class=" img-responsive logo mb-5 mt-5" />
                 <form method="POST">
                     {%csrf_token%}
-
-
                     <div class="input-group input-group-lg mb-5">
                         <input type="text" name="query" class="form-control inputstyle"
                             placeholder="search for calories in your food..." required>
                         <button class="btn whoop" type="submit" id="button-addon2">Find calories</button>
                     </div>
                 </form>
-
                 {%if api%}
-                {%if api == "There was an error"%}
+                {%if api == "oops! There was an error"%}
                 <div class="alert alert-warning"> Oh no! something went wrong.Please try again in sometime. </div>
                 {%else%}
                 <h1> {{api.0.name | capfirst}} has <strong> {{api.0.calories}} Calories</strong> per 100g
@@ -119,51 +116,12 @@
                                         {{api.0.calories | div:79|floatformat:0}}  </strong> Minutes </p>
                                 </div>
                             </div>
-                            
                         </div>
-                        <div>
-                            <canvas id="myChart" width="400" height="400"></canvas>
-                       </div>
                     </div>
                 </div>
-                {%endif%}
-                {%endif%}
             </div>
-            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-            
-            <script>
-                
-             const ctx = document.getElementById('myChart');
-
-                new Chart(ctx, {
-                     type: 'bar',
-                     data: {
-                     labels: ['Carbs', 'Total Fat', 'Fiber', 'Protein'],
-                    datasets: [{
-                    label: 'Nutrition Values of {{api.0.name | capfirst}}',
-                    data: [
-                    {{api.0.carbohydrates_total_g}}, 
-                    
-                    {{api.0.fat_total_g}}, 
-                    {{api.0.fiber_g}}, 
-                   
-                    {{api.0.protein_g}},
-                    
-                 ],
-                    borderWidth: 1
-                                    }]
-                                 },
-                        options: {
-                            responsive:true,
-                            maintainAspectRatio:false,
-                        scales: {
-                        y: {
-                        beginAtZero: true
-                                   }
-                                             }
-                                }
-                            });
-</script>
+            {%endif%}
+            {%endif%}
 </body>
 
 </html>
